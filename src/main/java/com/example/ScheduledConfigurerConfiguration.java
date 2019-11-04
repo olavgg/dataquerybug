@@ -1,7 +1,5 @@
 package com.example;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
@@ -20,21 +18,10 @@ public class ScheduledConfigurerConfiguration implements SchedulingConfigurer {
 
         ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
         taskScheduler.setPoolSize(5);// Set the pool of threads
-        taskScheduler.setThreadNamePrefix("solakerbp-s-t");
+        taskScheduler.setThreadNamePrefix("bookjob-t");
         taskScheduler.initialize();
         taskRegistrar.setTaskScheduler(taskScheduler);
 
-    }
-
-    @Bean
-    @ConditionalOnProperty(
-            prefix = "sol.work-permit-task",
-            name = "enabled",
-            matchIfMissing = true,
-            havingValue = "true"
-    )
-    WorkPermitJob workPermitJob(){
-        return new WorkPermitJob();
     }
 
 }

@@ -1,9 +1,10 @@
 package com.example
 
+
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-class BookServiceSpec extends Specification implements ServiceUnitTest<BookService>{
+class BookServiceSpec extends Specification implements ServiceUnitTest<IBookService>{
 
     def setup() {
     }
